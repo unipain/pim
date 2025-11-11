@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo</title>
+  <link rel="stylesheet" href="./componentes/estilo.css">
+  <style>
+    body {
+    background: #000 !important;  
+    margin: 0;
+    font-family: sans-serif;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+    #top-text {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      opacity: 0;            
+      text-align: center;
+    }
+
+    .miss-text {
+      color: #fff;
+      font-size: 2rem;
+      pointer-events: none;
+      animation: fadeout 1s forwards;
+      text-align: center;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes fadeout {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="top-text">Ache o propósito</h1>
+
+  <script>
+    const topText = document.getElementById('top-text');
+
+window.addEventListener('load', () => {
+  topText.style.opacity = 1; 
+});
+
+document.addEventListener('click', () => {
+  const miss = document.createElement('div');
+  miss.className = 'miss-text';
+  miss.textContent = 'Você não encontrou';
+
+  miss.style.position = 'fixed';
+  miss.style.left = '50%';
+  miss.style.top = '50%';
+  miss.style.transform = 'translate(-50%, -50%)';
+
+  document.body.appendChild(miss);
+
+  setTimeout(() => miss.remove(), 1000); 
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Elenco</title>
+    <link rel="stylesheet" href="./componentes/estilo.css" />
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#sinopse">Sinopse</a> 
+        <a href="elenco.html">Elenco</a>
+        <a href="making.html">Making Of</a> 
+        <a href="jogo.html" id="jogo-btn"><span class="misterio">???</span></a>
+    </nav>
+
+    <h1>Produtores</h1>
+    <div class="elenco">
+        <div class="personagem" data-nome="Maria Eduarda Stach" data-papel="● Diretora <br>● Roteirista <br>● Montadora <br>● Produtora">
+            <img src="assets/bosses/0.jpg">
+            <p>Maria Eduarda Stach</p>
+        </div>
+        <div class="personagem" data-nome="Brunna Martini" data-papel="● Diretora de Arte <br>● Continuista <br>● Artista Conceitual">
+            <img src="assets/bosses/1.jpg">
+            <p>Brunna Martini</p>
+        </div>
+        <div class="personagem" data-nome="Sofia de Fatima Cruz" data-papel="● Assistente de Arte <br>● Colorista <br>● Motion Designer">
+            <img src="assets/bosses/2.jpeg">
+            <p>Sofia de Fatima Cruz</p>
+        </div>
+        <div class="personagem" data-nome="Mathues Emanuel" data-papel="● Assistente de Direção">
+            <img src="assets/bosses/4.jpg">
+            <p>Matheus Emanuel</p>
+        </div>
+        <div class="personagem" data-nome="Dimitri Passos" data-papel="● Assistente de Produção">
+            <img src="assets/bosses/3.jpg">
+            <p>Dimitri Passos</p>
+        </div>
+    </div>
+
+    <hr class="separador">
+
+    <h1>Atores</h1>
+    <div class="elenco">
+        <div class="personagem" data-nome="Beatriz Oliveira" data-comentario="<b>Idade:</b> 20 anos" data-papel="<b>Personagem:</b> Guria">
+            <img src="assets/actors/4.jpg">
+            <p>Beatriz Oliveira</p>
+        </div>
+        <div class="personagem" data-nome="Bruno Navarro Gamba" data-comentario="<b>Idade:</b> 20 anos" data-papel="<b>Personagens:</b> Jacó e Garçom">
+            <img src="assets/actors/2.jpg">
+            <p>Bruno Navarro Gamba</p>
+        </div>
+        <div class="personagem" data-nome="Caíque Rodrigues" data-comentario="<b>Idade:</b> 25 anos" data-papel="<b>Personagem:</b> Pró Vida">
+            <img src="assets/actors/6.jpg">
+            <p>Caíque Rodrigues</p>
+        </div>
+        <div class="personagem" data-nome="Edvaldo Simão" data-comentario="<b>Idade:</b> 40 anos" data-papel="<b>Personagem:</b> Cozinheiro">
+            <img src="assets/actors/10.jpg">
+            <p>Edvaldo Simão</p>
+        </div>
+        <div class="personagem" data-nome="Gabriel Viana de Souza" data-comentario="<b>Idade:</b> 19 anos" data-papel="<b>Personagem:</b> Joás">
+            <img src="assets/actors/7.jpg">
+            <p>Gabriel Viana de Souza</p>
+        </div>
+    </div>
+    <div class="elenco">
+        <div class="personagem" data-nome="João Pedro Luz" data-comentario="<b>Idade:</b> 30 anos" data-papel="<b>Personagem:</b> Titio Pedro">
+            <img src="assets/actors/3.jpg">
+            <p>João Pedro Luz</p>
+        </div>
+        <div class="personagem" data-nome="Kamili Lopes" data-comentario="<b>Idade:</b> 21 anos" data-papel="<b>Personagem:</b> Mulher">
+            <img src="assets/actors/8.jpg">
+            <p>Kamili Lopes</p>
+        </div>
+        <div class="personagem" data-nome="Maju Abrahão" data-comentario="<b>Idade:</b> 28 anos" data-papel="<b>Personagem:</b> Roteirista">
+            <img src="assets/actors/1.jpg">
+            <p>Maju Abrahão</p>
+        </div>
+        <div class="personagem" data-nome="Maria Clara" data-comentario="<b>Idade:</b> 7 anos" data-papel="<b>Personagem:</b> Criança">
+            <img src="assets/actors/9.jpg">
+            <p>Maria Clara</p>
+        </div>
+        <div class="personagem" data-nome="Rodrigo Pinho" data-comentario="<b>Idade:</b> 32 anos" data-papel="<b>Personagens:</b> Cliente e Suicida">
+            <img src="assets/actors/5.jpg">
+            <p>Rodrigo Pinho</p>
+        </div>
+    </div>
+
+<div class="popup" id="popup">
+    <span class="close" id="close">&times;</span>
+    <div class="popup-content">
+        <img id="popup-img" src="" alt="">
+        <div class="popup-detalhes">
+            <h2 id="popup-nome"></h2>
+            <p id="popup-papel"></p>
+            <p id="popup-comentario"></p>
+        </div>
+    </div>
+</div>
+<script>
+    const personagens = document.querySelectorAll('.personagem');
+const popup = document.getElementById('popup');
+const popupImg = document.getElementById('popup-img');
+const popupNome = document.getElementById('popup-nome');
+const popupPapel = document.getElementById('popup-papel');
+const popupComentario = document.getElementById('popup-comentario');
+const closeBtn = document.getElementById('close');
+
+personagens.forEach(p => {
+    p.addEventListener('click', () => {
+        popup.style.display = 'flex';
+        popupImg.src = p.querySelector('img').src;
+        popupNome.textContent = p.dataset.nome;
+        popupPapel.innerHTML = p.dataset.papel; 
+        popupComentario.innerHTML = p.dataset.comentario || '';
+    });
+});
+
+closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
+popup.addEventListener('click', (e) => {
+    if(e.target === popup) popup.style.display = 'none';
+});
+</script>
+<script src="./componentes/transicao.js"></script>
+</body>
+</html>
