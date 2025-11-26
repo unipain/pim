@@ -180,4 +180,14 @@ p {
     display: flex;
     justify-content: center;
     margin: 20px 0;
+    width: 100%;
 }
+
+.video-container iframe {
+    width: 100%;
+    max-width: 640px; /* tamanho máximo do iframe */
+    height: auto;     /* mantém proporção */
+    aspect-ratio: 16 / 9; /* força proporção de vídeo */
+    display: block;
+}
+
