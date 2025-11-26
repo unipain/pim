@@ -175,3 +175,9 @@ p {
   transition: opacity 1s ease;
   z-index: 999;  
 }
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
